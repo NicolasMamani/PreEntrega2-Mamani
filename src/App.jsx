@@ -1,6 +1,13 @@
-import { Tarjeta } from "./Tarjeta";
+import { Navbar } from "./components/layouts/navbar/Navbar";
+import { ItemListContainer } from "./components/pages/ItemListContainer/ItemListContainer";
+
 function App() {
-  return <Tarjeta />;
+  return (
+    <>
+      <Navbar></Navbar>
+      <ItemListContainer greeting="Bienvenidos"></ItemListContainer>
+    </>
+  );
 }
 
 export default App;
