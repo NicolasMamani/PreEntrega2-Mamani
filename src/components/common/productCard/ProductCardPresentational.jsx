@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ProductCardPresentational = ({ el }) => {
   return (
     <div className="card w-25 rounded border-black p-2 m-2">
@@ -7,12 +9,14 @@ const ProductCardPresentational = ({ el }) => {
         <br />
         <p className="card-text text-center">${el.price}</p>
         <div className="center text-center">
-          <button
-            className="btn"
-            style={{ background: "#7d3c98", color: "white" }}
-          >
-            Comprar
-          </button>
+          <Link to="/itemDetail/${el.id}">
+            <button
+              className="btn"
+              style={{ background: "#7d3c98", color: "white" }}
+            >
+              Comprar
+            </button>
+          </Link>
         </div>
       </div>
     </div>

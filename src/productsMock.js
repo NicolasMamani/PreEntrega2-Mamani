@@ -5,6 +5,7 @@ export const products = [
     price: 460000,
     category: "Mac",
     img: "https://res.cloudinary.com/dttgwvnoe/image/upload/v1685591074/Ecommerce%20Notebooks/Mac_Air_M1_amlrmq.webp",
+    stock: 10,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const products = [
     price: 683355,
     category: "Diseño",
     img: "https://res.cloudinary.com/dttgwvnoe/image/upload/v1685591069/Ecommerce%20Notebooks/HP_Victus_of6ifu.webp",
+    stock: 15,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const products = [
     price: 262000,
     category: "Oficina",
     img: "https://res.cloudinary.com/dttgwvnoe/image/upload/v1685591065/Ecommerce%20Notebooks/Asus_Vivobook_qbshqv.webp",
+    stock: 20,
   },
   {
     id: 4,
@@ -26,5 +29,6 @@ export const products = [
     price: 1119776,
     category: "Gamer",
     img: "https://res.cloudinary.com/dttgwvnoe/image/upload/v1685591061/Ecommerce%20Notebooks/Asus_Rog_wgba5z.webp",
+    stock: 30,
   },
 ];
