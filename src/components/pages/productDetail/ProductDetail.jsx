@@ -3,6 +3,7 @@ import ItemCount from "../../common/ItemCount/ItemCount";
 const ProductDetail = ({ productSelected }) => {
   // Creo una función para agregar al carrito
   const onAdd = (cantidad) => {
+    //creo una variable que contendra todo lo del producto, pero con la cantidad seleccionada
     let data = { ...productSelected, quatity: cantidad };
     console.log(data);
   };
@@ -15,7 +16,7 @@ const ProductDetail = ({ productSelected }) => {
             <div className="card w-25 rounded border-black m-2 p-2">
               <h5>{productSelected.title}</h5>
               <img src={productSelected.img} />
-              {/* Uso el componente useCount */}
+              {/* Hago un renderizado condicional para mostrar o no el ItemCount */}
               {productSelected.stock > 0 ? (
                 <ItemCount
                   stock={productSelected.stock}
@@ -23,12 +24,12 @@ const ProductDetail = ({ productSelected }) => {
                   onAdd={onAdd}
                 />
               ) : (
-                <h3>No hay stock</h3>
+                <h3>Cargando objeto...</h3>
               )}
             </div>
           </div>
         ) : (
-          <h1>Cargando objeto...</h1>
+          <h1>No hay stock</h1>
         )}
       </div>
     </div>

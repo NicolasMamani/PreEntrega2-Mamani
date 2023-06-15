@@ -1,5 +1,3 @@
-//No importa que la url tenga bs en miniscula
-/* import { Box, Button, Grid } from "@mui/material"; */
 import { CartWidget } from "../../common/CartWidget/CartWidget";
 import logo from "./assets/NicoComputacion.png";
 import { Outlet } from "react-router-dom";
@@ -18,10 +16,20 @@ export const Navbar = () => {
             </div>
             <div className="col-8">
               <div className="d-flex justify-content-around pt-2">
-                <button className="btn btn-primary">Gamer</button>
-                <button className="btn btn-primary">Mac</button>
-                <button className="btn btn-primary">Oficina</button>
-                <button className="btn btn-primary">Diseño</button>
+                {/* Al link que me dirigo a Todos le pongo la dirección raiz */}
+                <Link to="/">
+                  <button className="btn btn-primary">Todos</button>
+                </Link>
+                {/* Los siguientes links son rutas dinamicas que me limitaran los items resultantes */}
+                <Link to="category/Mac">
+                  <button className="btn btn-primary">Mac</button>
+                </Link>
+                <Link to="category/Oficina">
+                  <button className="btn btn-primary">Oficina</button>
+                </Link>
+                <Link to="category/Diseño">
+                  <button className="btn btn-primary">Diseño</button>
+                </Link>
                 <div>
                   <CartWidget></CartWidget>
                 </div>

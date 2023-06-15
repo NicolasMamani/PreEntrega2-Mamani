@@ -9,12 +9,12 @@ const ProductCardPresentational = ({ el }) => {
         <br />
         <p className="card-text text-center">${el.price}</p>
         <div className="center text-center">
-          <Link to="/itemDetail/${el.id}">
+          <Link to={`/itemDetail/${el.id}`}>
             <button
               className="btn"
               style={{ background: "#7d3c98", color: "white" }}
             >
-              Comprar
+              Ver detalle
             </button>
           </Link>
         </div>

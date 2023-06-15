@@ -27,7 +27,7 @@ export const products = [
     id: 4,
     title: "Asus Rog i7-13 16gb ram 1000gb ssd win 11 black",
     price: 1119776,
-    category: "Gamer",
+    category: "Diseño",
     img: "https://res.cloudinary.com/dttgwvnoe/image/upload/v1685591061/Ecommerce%20Notebooks/Asus_Rog_wgba5z.webp",
     stock: 30,
   },

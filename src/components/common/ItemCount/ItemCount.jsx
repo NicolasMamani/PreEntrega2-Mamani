@@ -1,7 +1,7 @@
 import { useCount } from "../../hooks/useCount";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-  //Llamo al customHook useCount
+  //Llamo al customHook useCount y uso la desestructuración para obtener el retorno de este custom hook
   const { count, increment, decrement } = useCount(initial, stock);
 
   return (
@@ -14,7 +14,13 @@ const ItemCount = ({ stock, initial, onAdd }) => {
           -
         </button>
         <span className="border rounded w-25 text-center">{count}</span>
-        <button onClick={() => onAdd(count)}>Agregar al carrito</button>
+        <button
+          className="btn"
+          style={{ background: "#7d3c98", color: "white" }}
+          onClick={() => onAdd(count)}
+        >
+          Agregar al carrito
+        </button>
       </div>
     </>
   );
