@@ -6,22 +6,27 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
   return (
     <>
-      <div className="count-container d-flex gap-3">
-        <button onClick={increment} className="btn btn-primary">
+      <div className="d-flex gap-5 mb-2 px-5">
+        <button
+          onClick={increment}
+          className="btn btn-primary"
+          style={{ width: "100pxs" }}
+        >
           +
         </button>
         <button onClick={decrement} className="btn btn-primary">
           -
         </button>
         <span className="border rounded w-25 text-center">{count}</span>
-        <button
-          className="btn"
-          style={{ background: "#7d3c98", color: "white" }}
-          onClick={() => onAdd(count)}
-        >
-          Agregar al carrito
-        </button>
       </div>
+
+      <button
+        className="btn"
+        style={{ background: "#7d3c98", color: "white" }}
+        onClick={() => onAdd(count)}
+      >
+        Agregar al carrito
+      </button>
     </>
   );
 };

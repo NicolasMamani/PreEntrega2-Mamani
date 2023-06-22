@@ -31,7 +31,9 @@ export const Navbar = () => {
                   <button className="btn btn-primary">Diseño</button>
                 </Link>
                 <div>
-                  <CartWidget></CartWidget>
+                  <Link to="/cart">
+                    <CartWidget></CartWidget>
+                  </Link>
                 </div>
               </div>
             </div>
