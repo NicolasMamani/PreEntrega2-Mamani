@@ -1,11 +1,11 @@
 import ItemCount from "../../common/ItemCount/ItemCount";
 
-const ProductDetail = ({ productSelected, agregarAlCarrito }) => {
+const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
   // Creo una función para agregar al carrito
   const onAdd = (cantidad) => {
     //creo una variable que contendra todo lo del producto, pero con la cantidad seleccionada
     let data = { ...productSelected, quatity: cantidad };
-    agregarAlCarrito(data);
+    addToCart(data);
   };
   return (
     <div>
@@ -23,7 +23,7 @@ const ProductDetail = ({ productSelected, agregarAlCarrito }) => {
               {productSelected.stock > 0 ? (
                 <ItemCount
                   stock={productSelected.stock}
-                  initial={1}
+                  initial={cantidad}
                   onAdd={onAdd}
                 />
               ) : (

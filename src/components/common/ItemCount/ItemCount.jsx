@@ -1,6 +1,6 @@
 import { useCount } from "../../hooks/useCount";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial = 1, onAdd }) => {
   //Llamo al customHook useCount y uso la desestructuración para obtener el retorno de este custom hook
   const { count, increment, decrement } = useCount(initial, stock);
 

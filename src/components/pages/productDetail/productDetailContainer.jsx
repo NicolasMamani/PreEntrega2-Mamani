@@ -9,7 +9,9 @@ const ProductDetailContainer = () => {
   let { id } = useParams();
 
   //consumimos el contexto
-  const { agregarAlCarrito } = useContext(CartContext);
+  const { addToCart, getQuantityById } = useContext(CartContext);
+
+  const cantidad = getQuantityById(+id);
 
   useEffect(() => {
     const productFind = products.find((product) => {
@@ -26,7 +28,8 @@ const ProductDetailContainer = () => {
   return (
     <ProductDetail
       productSelected={productSelected}
-      agregarAlCarrito={agregarAlCarrito}
+      addToCart={addToCart}
+      cantidad={cantidad}
     />
   );
 };

@@ -7,7 +7,7 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   //función para agregar al carrito
-  const agregarAlCarrito = (productoNuevo) => {
+  const addToCart = (productoNuevo) => {
     //verifico si el producto nuevo ya esta en cart
     let exist = isInCart(productoNuevo.id);
     console.log(cart);
@@ -17,7 +17,7 @@ const CartContextProvider = ({ children }) => {
         if (product.id === productoNuevo.id) {
           return {
             ...product,
-            quatity: product.quatity + productoNuevo.quatity,
+            quatity: productoNuevo.quatity,
           };
         } else {
           return product;
@@ -48,11 +48,18 @@ const CartContextProvider = ({ children }) => {
     setCart(newArray);
   };
 
+  //creo una función para buscar la cantidad total de un elemento según su id
+  const getQuantityById = (id) => {
+    let product = cart.find((element) => element.id === id);
+    return product?.quatity;
+  };
+
   let data = {
     cart: cart,
-    agregarAlCarrito: agregarAlCarrito,
+    addToCart: addToCart,
     deleteCart: deleteCart,
     deleteElement: deleteElement,
+    getQuantityById: getQuantityById,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
