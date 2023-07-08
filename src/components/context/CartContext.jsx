@@ -1,10 +1,13 @@
 import { createContext, useState } from "react";
+import Swal from "sweetalert2";
 
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   //usamos un useState para guardar los productos del carrito
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   //función para agregar al carrito
   const addToCart = (productoNuevo) => {
@@ -24,8 +27,10 @@ const CartContextProvider = ({ children }) => {
         }
       });
       setCart(newArray);
+      localStorage.setItem("cart", JSON.stringify(newArray));
     } else {
       setCart([...cart, productoNuevo]);
+      localStorage.setItem("cart", JSON.stringify([...cart, productoNuevo]));
     }
   };
 
@@ -40,12 +45,14 @@ const CartContextProvider = ({ children }) => {
   //creo una función para borrar el carrito
   const deleteCart = () => {
     setCart([]);
+    localStorage.removeItem("cart");
   };
 
   //creo una función para borrar un elemento
   const deleteElement = (id) => {
     let newArray = cart.filter((product) => product.id !== id);
     setCart(newArray);
+    localStorage.setItem("cart", JSON.stringify(newArray));
   };
 
   //creo una función para buscar la cantidad total de un elemento según su id
@@ -54,12 +61,28 @@ const CartContextProvider = ({ children }) => {
     return product?.quatity;
   };
 
+  const getTotalItems = () => {
+    let total = cart.reduce((accumulator, element) => {
+      return accumulator + element.quatity;
+    }, 0);
+    return total;
+  };
+
+  const getTotalPrice = () => {
+    let totalPrice = cart.reduce((accumulator, element) => {
+      return accumulator + element.price * element.quatity;
+    }, 0);
+    return totalPrice;
+  };
+
   let data = {
     cart: cart,
-    addToCart: addToCart,
-    deleteCart: deleteCart,
-    deleteElement: deleteElement,
-    getQuantityById: getQuantityById,
+    addToCart,
+    deleteCart,
+    deleteElement,
+    getQuantityById,
+    getTotalItems,
+    getTotalPrice,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

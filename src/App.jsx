@@ -4,6 +4,7 @@ import ProductDetailContainer from "./components/pages/productDetail/productDeta
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartContextProvider from "./components/context/CartContext";
 import CartContainer from "./components/pages/cart/CartContainer";
+import CheckoutContainer from "./components/pages/checkout/CheckoutContainer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/cart" element={<CartContainer />} />
               {/* A todas las direcciones que no sean las anteriores las dirigo a un Erro 404 */}
               <Route path="*" element={<h3>Error 404</h3>} />
+              <Route path="/checkout" element={<CheckoutContainer />}></Route>
             </Route>
           </Routes>
         </CartContextProvider>

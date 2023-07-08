@@ -1,4 +1,6 @@
+import Swal from "sweetalert2";
 import ItemCount from "../../common/ItemCount/ItemCount";
+import { RingLoader } from "react-spinners";
 
 const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
   // Creo una función para agregar al carrito
@@ -6,11 +8,24 @@ const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
     //creo una variable que contendra todo lo del producto, pero con la cantidad seleccionada
     let data = { ...productSelected, quatity: cantidad };
     addToCart(data);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Producto agregado correctamente",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
+  const CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+
   return (
     <div>
       <div>
-        {productSelected ? (
+        {productSelected?.title ? (
           <div>
             {/* Hago el diseño de una tarjeta */}
             <div
@@ -27,12 +42,12 @@ const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
                   onAdd={onAdd}
                 />
               ) : (
-                <h3>Cargando objeto...</h3>
+                <h1>No hay stock</h1>
               )}
             </div>
           </div>
         ) : (
-          <h1>No hay stock</h1>
+          <RingLoader color="#36d7b7" size={180} cssOverride={CSSProperties} />
         )}
       </div>
     </div>
