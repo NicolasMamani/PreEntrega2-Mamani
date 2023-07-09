@@ -1,10 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBVGLzC_aYKcJ3owVB_K_9SLc9eMdKjGno",
   authDomain: "nicocomputacion-7668b.firebaseapp.com",
@@ -14,6 +10,7 @@ const firebaseConfig = {
   appId: "1:878911020094:web:cffb323f82257f956e056f",
 };
 
-// Initialize Firebase
+// Inicializamos Firebase con la información sensible de la variable  firebaseConfig
 const app = initializeApp(firebaseConfig);
+//Ahora accedemos a la base de datos que contiene todos los documentos y luego la exportamos
 export const database = getFirestore(app);

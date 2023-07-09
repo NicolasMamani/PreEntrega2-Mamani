@@ -1,24 +1,34 @@
 import { useParams } from "react-router-dom";
-import { products } from "../../../productsMock";
 import ProductCardPresentational from "../../common/productCard/ProductCardPresentational";
 import { useEffect, useState } from "react";
 import { RingLoader } from "react-spinners";
+import { database } from "../../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { categoryName } = useParams();
+
   useEffect(() => {
-    //en una nueva variable filtro los productos con la categoria de useParams
-    let productosFiltrados = products.filter(
-      (e) => e.category === categoryName
-    );
-    //Hago uso del operador ternario para condicionar si se va a filtar o no los productos
-    const datosObtenidos = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(categoryName ? productosFiltrados : products);
-      }, 0);
-    });
-    datosObtenidos.then((res) => setItems(res));
+    let itemCollection = collection(database, "products");
+    let consult;
+    if (categoryName) {
+      //hago una query donde voy a guardar en una variable solamente los que tengan la misma categoria
+      consult = query(itemCollection, where("category", "==", categoryName));
+    } else {
+      consult = itemCollection;
+    }
+    getDocs(consult)
+      .then((res) => {
+        let products = res.docs.map((element) => {
+          return {
+            id: element.id,
+            ...element.data(),
+          };
+        });
+        setItems(products);
+      })
+      .catch((err) => console.log(err));
   }, [categoryName]);
 
   const CSSProperties = {
