@@ -3,7 +3,7 @@ import ItemCount from "../../common/ItemCount/ItemCount";
 import { RingLoader } from "react-spinners";
 
 const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
-  // Creo una función para agregar al carrito
+  // Creo una función para usar el método addToCart con la libreria de sweet alert 2
   const onAdd = (cantidad) => {
     //creo una variable que contendra todo lo del producto, pero con la cantidad seleccionada
     let data = { ...productSelected, quatity: cantidad };
@@ -25,6 +25,7 @@ const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
   return (
     <div>
       <div>
+        {/* Hago un renderizado condicional que me muestre el producto o un loader */}
         {productSelected?.title ? (
           <div>
             {/* Hago el diseño de una tarjeta */}

@@ -16,7 +16,6 @@ export const Navbar = () => {
             </div>
             <div className="col-8">
               <div className="d-flex justify-content-around pt-2">
-                {/* Al link que me dirigo a Todos le pongo la dirección raiz */}
                 <Link to="/">
                   <button className="btn btn-primary">Todos</button>
                 </Link>

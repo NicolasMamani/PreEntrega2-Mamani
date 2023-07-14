@@ -10,6 +10,7 @@ const CartContainer = () => {
   //Llamada a función getTotalPrice
   let totalPrice = getTotalPrice();
 
+  //creo una función que ejecute deleteCart, pero que lo hago junto a sweet alert 2
   const clearCart = () => {
     Swal.fire({
       title: "¿Quieres limpiar el carrito?",
@@ -17,7 +18,6 @@ const CartContainer = () => {
       confirmButtonText: "Si, limpiar el carrito",
       denyButtonText: `No, cancelar`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         deleteCart();
         Swal.fire("Carrito Vaciado!", "", "success");
@@ -30,6 +30,7 @@ const CartContainer = () => {
   return (
     <div className="p-2">
       <h2>Total Pedido : ${totalPrice}</h2>
+      {/* Hago un renderizado condicional para el caso donde no haya items, los botones no se muestren */}
       {cart.length > 0 && (
         <>
           <button onClick={clearCart} className="btn btn-danger mb-2">

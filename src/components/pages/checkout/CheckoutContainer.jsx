@@ -58,6 +58,7 @@ const CheckoutContainer = () => {
 
   return (
     <>
+      {/* Se usa un renderizado condicional para cuando todavia no se genero el id de la orden, por lo que se mostrara el formulario */}
       {!orderId ? (
         <Checkout
           handleChange={handleChange}

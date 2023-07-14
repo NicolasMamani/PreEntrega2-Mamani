@@ -59,6 +59,7 @@ const CartContextProvider = ({ children }) => {
     return product?.quatity;
   };
 
+  //se crea una función que obtiene la suma total de todos los productos
   const getTotalItems = () => {
     let total = cart.reduce((accumulator, element) => {
       return accumulator + element.quatity;
@@ -66,6 +67,7 @@ const CartContextProvider = ({ children }) => {
     return total;
   };
 
+  //se crea una función que obtiene la suma total del precio de los productos
   const getTotalPrice = () => {
     let totalPrice = cart.reduce((accumulator, element) => {
       return accumulator + element.price * element.quatity;
@@ -73,6 +75,7 @@ const CartContextProvider = ({ children }) => {
     return totalPrice;
   };
 
+  //se crea una variable data que sera la que le pasaremos al CartContext para que proveea el contexto
   let data = {
     cart: cart,
     addToCart,
