@@ -1,11 +1,13 @@
 import { useCount } from "../../hooks/useCount";
 
-const ItemCount = ({ stock, initial = 1, onAdd }) => {
+const ItemCount = ({ stock, initial = 1, onAdd, productSelected }) => {
   //Llamo al customHook useCount y uso la desestructuración para obtener el retorno de este custom hook
   const { count, increment, decrement } = useCount(initial, stock);
+  let total = productSelected.price * count;
 
   return (
     <>
+      <h5>Precio total : ${total}</h5>
       <div className="d-flex gap-5 mb-2 px-5">
         <button
           onClick={increment}

@@ -14,7 +14,6 @@ const ProductDetailContainer = () => {
   const { addToCart, getQuantityById } = useContext(CartContext);
   //En una variable voy a guardar la cantidad del producto
   const cantidad = getQuantityById(id);
-  console.log("esta es la cantidad", cantidad);
 
   useEffect(() => {
     //Guardo la colección "products" en una variable

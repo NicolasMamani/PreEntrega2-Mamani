@@ -12,7 +12,6 @@ const CartContextProvider = ({ children }) => {
   const addToCart = (productoNuevo) => {
     //verifico si el producto nuevo ya esta en cart
     let exist = isInCart(productoNuevo.id);
-    console.log(cart);
     if (exist) {
       //creo un nuevo array donde se actualiza la cantidad
       let newArray = cart.map((product) => {

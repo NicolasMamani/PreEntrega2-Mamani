@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBVGLzC_aYKcJ3owVB_K_9SLc9eMdKjGno",
-  authDomain: "nicocomputacion-7668b.firebaseapp.com",
-  projectId: "nicocomputacion-7668b",
-  storageBucket: "nicocomputacion-7668b.appspot.com",
-  messagingSenderId: "878911020094",
-  appId: "1:878911020094:web:cffb323f82257f956e056f",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Inicializamos Firebase con la información sensible de la variable  firebaseConfig

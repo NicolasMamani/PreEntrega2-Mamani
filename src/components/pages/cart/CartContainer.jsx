@@ -47,7 +47,8 @@ const CartContainer = () => {
         <div key={product.id} className="border rounded mb-2 p-2 row">
           <div className="col">
             <h2>Modelo : {product.title}</h2>
-            <h3>Precio : ${product.price}</h3>
+            <h3>Precio Unitario: ${product.price}</h3>
+            <h3>Precio total: ${product.price * product.quatity}</h3>
             <h3>Cantidad : {product.quatity}</h3>
             <button
               className="btn btn-warning"

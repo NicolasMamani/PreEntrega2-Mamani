@@ -3,3 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.card-transform {
+  transition: transform 0.3s;
+}
+.card-transform:hover {
+  transform: scale(1.1);
+}

@@ -34,12 +34,14 @@ const ProductDetail = ({ productSelected, addToCart, cantidad }) => {
             >
               <h5>{productSelected.title}</h5>
               <img src={productSelected.img} />
+              <h5>Precio : ${productSelected.price}</h5>
               {/* Hago un renderizado condicional para mostrar o no el ItemCount */}
               {productSelected.stock > 0 ? (
                 <ItemCount
                   stock={productSelected.stock}
                   initial={cantidad}
                   onAdd={onAdd}
+                  productSelected={productSelected}
                 />
               ) : (
                 <h1>No hay stock</h1>

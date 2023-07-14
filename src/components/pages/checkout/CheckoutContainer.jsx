@@ -55,7 +55,6 @@ const CheckoutContainer = () => {
         .min(9, "el número tiene que tener como mínimo 9 dígitos "),
     }),
   });
-  console.log("El ID de la orden de compra es -> ", orderId);
 
   return (
     <>
