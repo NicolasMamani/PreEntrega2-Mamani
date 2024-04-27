@@ -1,12 +1,35 @@
+@tailwind base; /*  normaliza el css */
+@tailwind components; /*  estilos para componentes */
+@tailwind utilities; /* son todas las clases de utilidad */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f6f6;
 }
 
 .card-transform {
-  transition: transform 0.3s;
+    transition: transform 0.3s;
 }
 .card-transform:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
+}
+@keyframes moveRightLeft {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px); /* Cambia la distancia que deseas */
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-shopping {
+    animation: moveRightLeft 2s infinite; /* Cambia la duración de la animación si lo deseas */
 }

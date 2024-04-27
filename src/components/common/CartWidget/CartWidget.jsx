@@ -6,21 +6,9 @@ export const CartWidget = () => {
   const { getTotalItems } = useContext(CartContext);
   let total = getTotalItems();
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       <BsFillCartFill color="white" size="35px"></BsFillCartFill>
-      <div
-        style={{
-          height: "20px",
-          width: "20px",
-          borderRadius: "50%",
-          background: "black",
-          color: "white",
-          textAlign: "center",
-          position: "absolute",
-          top: "70%",
-          left: "15%",
-        }}
-      >
+      <div className="rounded-full bg-slate-100 p-1 text-center hover:text-3xl hover:p-2">
         {total}
       </div>
     </div>

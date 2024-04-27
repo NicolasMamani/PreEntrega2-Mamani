@@ -2,25 +2,18 @@ import { Link } from "react-router-dom";
 
 const ProductCardPresentational = ({ el }) => {
   return (
-    <div
-      className="card w-25 rounded border-black p-2 m-2"
-      style={{ overflow: "hidden" }}
-    >
+    <div className="p-5 b-2 text-center m-5 hover:bg-purple-300">
       <img
         src={el.img}
         alt="zapatillas puma"
-        className="card-img-top card-transform"
       />
       <div style={{ zIndex: "2" }}>
-        <h5 className="card-title text-center">{el.title}</h5>
+        <h5 className="text-3xl max-w-xs rounded-lg p-4">{el.title}</h5>
         <br />
-        <p className="card-text text-center">${el.price}</p>
-        <div className="center text-center">
+        <p>${el.price}</p>
+        <div>
           <Link to={`/itemDetail/${el.id}`}>
-            <button
-              className="btn"
-              style={{ background: "#7d3c98", color: "white" }}
-            >
+            <button className="bg-slate-50 hover:bg-purple-500 hover:text-xl text-black font-bold py-2 px-4 rounded">
               Ver detalle
             </button>
           </Link>

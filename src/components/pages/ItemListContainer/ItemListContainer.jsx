@@ -51,7 +51,7 @@ export const ItemListContainer = () => {
   //si el array de items no esta vacio se mapeara los productos para mostrarlos uno por uno
   return (
     <>
-      <div className="d-flex flex-wrap justify-content-around mt-2">
+      <div className="flex">
         {items.map((el) => {
           return <ProductCardPresentational el={el} key={el.id} />;
         })}

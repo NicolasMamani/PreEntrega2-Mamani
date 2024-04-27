@@ -1,74 +1,85 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const CartContainer = () => {
-  //consumo el contexto cart de CartContext
-  const { cart, deleteCart, deleteElement, getTotalPrice } =
-    useContext(CartContext);
+    //consumo el contexto cart de CartContext
+    const { cart, deleteCart, deleteElement, getTotalPrice } =
+        useContext(CartContext);
 
-  //Llamada a función getTotalPrice
-  let totalPrice = getTotalPrice();
+    //Llamada a función getTotalPrice
+    let totalPrice = getTotalPrice();
 
-  //creo una función que ejecute deleteCart, pero que lo hago junto a sweet alert 2
-  const clearCart = () => {
-    Swal.fire({
-      title: "¿Quieres limpiar el carrito?",
-      showDenyButton: true,
-      confirmButtonText: "Si, limpiar el carrito",
-      denyButtonText: `No, cancelar`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteCart();
-        Swal.fire("Carrito Vaciado!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("No se vacio el carrito", "", "info");
-      }
-    });
-  };
+    //creo una función que ejecute deleteCart, pero que lo hago junto a sweet alert 2
+    const clearCart = () => {
+        Swal.fire({
+            title: '¿Quieres limpiar el carrito?',
+            showDenyButton: true,
+            confirmButtonText: 'Si, limpiar el carrito',
+            denyButtonText: `No, cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteCart();
+                Swal.fire('Carrito Vaciado!', '', 'success');
+            } else if (result.isDenied) {
+                Swal.fire('No se vacio el carrito', '', 'info');
+            }
+        });
+    };
 
-  return (
-    <div className="p-2">
-      <h2>Total Pedido : ${totalPrice}</h2>
-      {/* Hago un renderizado condicional para el caso donde no haya items, los botones no se muestren */}
-      {cart.length > 0 && (
-        <>
-          <button onClick={clearCart} className="btn btn-danger mb-2">
-            Limpiar carrito
-          </button>
-          <Link to="/checkout">
-            <button className="btn btn-success mb-2 ms-2">
-              Finalizar compra
-            </button>
-          </Link>
-        </>
-      )}
-      {/* renderizo los productos de cart */}
-      {cart.map((product) => (
-        <div key={product.id} className="border rounded mb-2 p-2 row">
-          <div className="col">
-            <h2>Modelo : {product.title}</h2>
-            <h3>Precio Unitario: ${product.price}</h3>
-            <h3>Precio total: ${product.price * product.quatity}</h3>
-            <h3>Cantidad : {product.quatity}</h3>
-            <button
-              className="btn btn-warning"
-              onClick={() => deleteElement(product.id)}
-            >
-              Eliminar producto
-            </button>
-          </div>
-          <div className="col text-center">
-            <img
-              src={product.img}
-              alt={product.title}
-              style={{ width: "200px" }}
-            />
-          </div>
+    return (
+        <div className="p-2">
+            <h2 className="text-center text-2xl font-bold">
+                Total Pedido : ${totalPrice}
+            </h2>
+            {/* Hago un renderizado condicional para el caso donde no haya items, los botones no se muestren */}
+            {cart.length > 0 && (
+                <div className="text-center mb-3">
+                    <button
+                        onClick={clearCart}
+                        className="bg-slate-50 hover:bg-purple-500 hover:text-xl text-black font-bold py-2 px-4 rounded"
+                    >
+                        Limpiar carrito
+                    </button>
+                    <Link to="/checkout">
+                        <button className="bg-slate-50 hover:bg-purple-500 hover:text-xl text-black font-bold py-2 px-4 rounded">
+                            Finalizar compra
+                        </button>
+                    </Link>
+                </div>
+            )}
+            {/* renderizo los productos de cart */}
+            {cart.map((product) => (
+                <div key={product.id} className="mb-2 p-2 row flex">
+                    <div className="mt-3 pt-5">
+                        <h2 className="text-center text-2xl">
+                            Modelo : {product.title}
+                        </h2>
+                        <h3 className="text-center text-2xl">
+                            Precio Unitario: ${product.price}
+                        </h3>
+                        <h3 className="text-center text-2xl">
+                            Precio total: ${product.price * product.quatity}
+                        </h3>
+                        <h3 className="text-center text-2xl">
+                            Cantidad : {product.quatity}
+                        </h3>
+                        <div className="text-center">
+                            <button
+                                className="text-center text-2xl hover:bg-purple-500 hover:text-xl text-black font-bold py-2 px-4 rounded"
+                                onClick={() => deleteElement(product.id)}
+                            >
+                                Eliminar producto
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <img src={product.img} alt={product.title} />
+                    </div>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default CartContainer;
